@@ -1,0 +1,202 @@
+2017-03-14 10:58:00 [ INFO] (DaemonConfigInit.java:133) - Successful initialize the service configuration parameters....
+2017-03-14 10:58:00 [ INFO] (JdbcUtil.java:65) - com.mysql.jdbc.Driver
+2017-03-14 10:58:00 [ INFO] (JdbcUtil.java:67) - jdbc:mysql://115.182.234.126:3306/testdinfooec?useUnicode=true&characterEncoding=utf8
+2017-03-14 10:58:00 [ INFO] (JdbcUtil.java:69) - boctest
+2017-03-14 10:58:00 [ INFO] (JdbcUtil.java:71) - boctest123
+2017-03-14 10:58:00 [ INFO] (JdbcUtil.java:84) - Initialize oec dbcp initialization success ....
+2017-03-14 10:58:00 [ INFO] (JdbcUtil.java:85) - com.mchange.v2.c3p0.ComboPooledDataSource[ identityToken -> 1hgeby99m1k980ch1k2kk0k|7c594d5e, dataSourceName -> 1hgeby99m1k980ch1k2kk0k|7c594d5e ]
+2017-03-14 10:58:03 [ WARN] (MyStaticValue.java:100) - not find library.properties in classpath use it by default !
+2017-03-14 10:58:03 [ WARN] (UserDefineLibrary.java:166) - init userLibrary  warning :D:\myworkers\clean_demo\boc-model\library\default.dic because : file not found or failed to read !
+2017-03-14 10:58:03 [ WARN] (UserDefineLibrary.java:97) - init ambiguity  warning :D:\myworkers\clean_demo\boc-model\library\ambiguity.dic because : file not found or failed to read !
+2017-03-14 10:59:06 [ INFO] (DaemonConfigInit.java:133) - Successful initialize the service configuration parameters....
+2017-03-14 10:59:07 [ INFO] (JdbcUtil.java:65) - com.mysql.jdbc.Driver
+2017-03-14 10:59:07 [ INFO] (JdbcUtil.java:67) - jdbc:mysql://115.182.234.126:3306/testdinfooec?useUnicode=true&characterEncoding=utf8
+2017-03-14 10:59:07 [ INFO] (JdbcUtil.java:69) - boctest
+2017-03-14 10:59:07 [ INFO] (JdbcUtil.java:71) - boctest123
+2017-03-14 10:59:07 [ INFO] (JdbcUtil.java:84) - Initialize oec dbcp initialization success ....
+2017-03-14 10:59:07 [ INFO] (JdbcUtil.java:85) - com.mchange.v2.c3p0.ComboPooledDataSource[ identityToken -> 1hgeby99m1k99fcdl0iyuf|4ae69619, dataSourceName -> 1hgeby99m1k99fcdl0iyuf|4ae69619 ]
+2017-03-14 10:59:11 [ WARN] (MyStaticValue.java:100) - not find library.properties in classpath use it by default !
+2017-03-14 10:59:12 [ INFO] (UserDefineLibrary.java:146) - init user userLibrary ok path is : D:\myworkers\clean_demo\boc-model\library\default.dic
+2017-03-14 10:59:12 [ INFO] (UserDefineLibrary.java:95) - init ambiguityLibrary ok!
+2017-03-14 10:59:12 [ INFO] (BocDaemonController.java:55) - 验证配置文件路径：D://daemondata
+2017-03-14 10:59:20 [ INFO] (ResourceExp.java:91) - ........获取要素和概念中的文本类型并且是有效的值，同时获取有效本体表达式中以k_开头的关键词和项目中有效的相关词
+2017-03-14 10:59:21 [ INFO] (LoadUtils.java:727) - Update the dictionary   words-new.dic file，Cut the word write model results 
+2017-03-14 10:59:22 [ INFO] (DATDictionary.java:75) - init core library ok use time :859
+2017-03-14 10:59:23 [ INFO] (NgramLibrary.java:17) - init ngram ok use time :1409
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:352) - 标题中获取的所有公司名字:[]
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:437) - ***标题中获取的主体公司名字:
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:浙江唐德影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:北京暴风科技股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:乐视影业（北京）有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 10:59:23 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 10:59:23 [ INFO] (BocAnalysisImpl.java:495) - ***风险标签结果总数:0
+2017-03-14 11:02:45 [ INFO] (DaemonConfigInit.java:133) - Successful initialize the service configuration parameters....
+2017-03-14 11:02:46 [ INFO] (JdbcUtil.java:65) - com.mysql.jdbc.Driver
+2017-03-14 11:02:46 [ INFO] (JdbcUtil.java:67) - jdbc:mysql://115.182.234.126:3306/testdinfooec?useUnicode=true&characterEncoding=utf8
+2017-03-14 11:02:46 [ INFO] (JdbcUtil.java:69) - boctest
+2017-03-14 11:02:46 [ INFO] (JdbcUtil.java:71) - boctest123
+2017-03-14 11:02:46 [ INFO] (JdbcUtil.java:84) - Initialize oec dbcp initialization success ....
+2017-03-14 11:02:46 [ INFO] (JdbcUtil.java:85) - com.mchange.v2.c3p0.ComboPooledDataSource[ identityToken -> 1hgeby99m1k9e4dx54dsk6|688869b9, dataSourceName -> 1hgeby99m1k9e4dx54dsk6|688869b9 ]
+2017-03-14 11:02:49 [ WARN] (MyStaticValue.java:100) - not find library.properties in classpath use it by default !
+2017-03-14 11:02:50 [ INFO] (UserDefineLibrary.java:146) - init user userLibrary ok path is : D:\myworkers\clean_demo\boc-model\library\default.dic
+2017-03-14 11:02:50 [ INFO] (UserDefineLibrary.java:95) - init ambiguityLibrary ok!
+2017-03-14 11:02:50 [ INFO] (BocDaemonController.java:55) - 验证配置文件路径：D://daemondata
+2017-03-14 11:03:01 [ INFO] (ResourceExp.java:91) - ........获取要素和概念中的文本类型并且是有效的值，同时获取有效本体表达式中以k_开头的关键词和项目中有效的相关词
+2017-03-14 11:03:01 [ INFO] (LoadUtils.java:727) - Update the dictionary   words-new.dic file，Cut the word write model results 
+2017-03-14 11:03:03 [ INFO] (DATDictionary.java:75) - init core library ok use time :933
+2017-03-14 11:03:04 [ INFO] (NgramLibrary.java:17) - init ngram ok use time :494
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:352) - 标题中获取的所有公司名字:[]
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:437) - ***标题中获取的主体公司名字:
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:浙江唐德影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:北京暴风科技股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:乐视影业（北京）有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:03:04 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:03:04 [ INFO] (BocAnalysisImpl.java:495) - ***风险标签结果总数:0
+2017-03-14 11:03:26 [ INFO] (DaemonConfigInit.java:133) - Successful initialize the service configuration parameters....
+2017-03-14 11:03:27 [ INFO] (JdbcUtil.java:65) - com.mysql.jdbc.Driver
+2017-03-14 11:03:27 [ INFO] (JdbcUtil.java:67) - jdbc:mysql://115.182.234.126:3306/testdinfooec?useUnicode=true&characterEncoding=utf8
+2017-03-14 11:03:27 [ INFO] (JdbcUtil.java:69) - boctest
+2017-03-14 11:03:27 [ INFO] (JdbcUtil.java:71) - boctest123
+2017-03-14 11:03:27 [ INFO] (JdbcUtil.java:84) - Initialize oec dbcp initialization success ....
+2017-03-14 11:03:27 [ INFO] (JdbcUtil.java:85) - com.mchange.v2.c3p0.ComboPooledDataSource[ identityToken -> 1hgeby99m1k9f07ytnww7z|131b4c5d, dataSourceName -> 1hgeby99m1k9f07ytnww7z|131b4c5d ]
+2017-03-14 11:03:29 [ WARN] (MyStaticValue.java:100) - not find library.properties in classpath use it by default !
+2017-03-14 11:03:30 [ INFO] (UserDefineLibrary.java:146) - init user userLibrary ok path is : D:\myworkers\clean_demo\boc-model\library\default.dic
+2017-03-14 11:03:30 [ INFO] (UserDefineLibrary.java:95) - init ambiguityLibrary ok!
+2017-03-14 11:03:31 [ INFO] (BocDaemonController.java:55) - 验证配置文件路径：D://daemondata
+2017-03-14 11:03:50 [ INFO] (ResourceExp.java:91) - ........获取要素和概念中的文本类型并且是有效的值，同时获取有效本体表达式中以k_开头的关键词和项目中有效的相关词
+2017-03-14 11:03:53 [ INFO] (LoadUtils.java:727) - Update the dictionary   words-new.dic file，Cut the word write model results 
+2017-03-14 11:06:18 [ INFO] (DATDictionary.java:75) - init core library ok use time :21895
+2017-03-14 11:06:53 [ INFO] (NgramLibrary.java:17) - init ngram ok use time :35077
+2017-03-14 11:06:53 [ INFO] (BocAnalysisImpl.java:352) - 标题中获取的所有公司名字:[]
+2017-03-14 11:06:59 [ INFO] (BocAnalysisImpl.java:437) - ***标题中获取的主体公司名字:
+2017-03-14 11:07:47 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:08:10 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:08:36 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:08:43 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:08:52 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:08:56 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:09:00 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:09:00 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:09:00 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:09:00 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:09:00 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:09:00 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:09:00 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:09:00 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:浙江唐德影视股份有限公司
+2017-03-14 11:09:00 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:北京暴风科技股份有限公司
+2017-03-14 11:09:00 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:乐视影业（北京）有限公司
+2017-03-14 11:09:00 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:09:00 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:1
+2017-03-14 11:09:00 [ INFO] (BocAnalysisImpl.java:495) - ***风险标签结果总数:0
+2017-03-14 11:12:22 [ INFO] (DaemonConfigInit.java:133) - Successful initialize the service configuration parameters....
+2017-03-14 11:12:22 [ INFO] (JdbcUtil.java:65) - com.mysql.jdbc.Driver
+2017-03-14 11:12:22 [ INFO] (JdbcUtil.java:67) - jdbc:mysql://115.182.234.126:3306/testdinfooec?useUnicode=true&characterEncoding=utf8
+2017-03-14 11:12:22 [ INFO] (JdbcUtil.java:69) - boctest
+2017-03-14 11:12:22 [ INFO] (JdbcUtil.java:71) - boctest123
+2017-03-14 11:12:22 [ INFO] (JdbcUtil.java:84) - Initialize oec dbcp initialization success ....
+2017-03-14 11:12:22 [ INFO] (JdbcUtil.java:85) - com.mchange.v2.c3p0.ComboPooledDataSource[ identityToken -> 1hgeby99m1k9qhao1ghcklx|4ae69619, dataSourceName -> 1hgeby99m1k9qhao1ghcklx|4ae69619 ]
+2017-03-14 11:12:33 [ WARN] (MyStaticValue.java:100) - not find library.properties in classpath use it by default !
+2017-03-14 11:12:34 [ INFO] (UserDefineLibrary.java:146) - init user userLibrary ok path is : D:\myworkers\clean_demo\boc-model\library\default.dic
+2017-03-14 11:12:34 [ INFO] (UserDefineLibrary.java:95) - init ambiguityLibrary ok!
+2017-03-14 11:12:34 [ INFO] (BocDaemonController.java:55) - 验证配置文件路径：D://daemondata
+2017-03-14 11:12:41 [ INFO] (ResourceExp.java:91) - ........获取要素和概念中的文本类型并且是有效的值，同时获取有效本体表达式中以k_开头的关键词和项目中有效的相关词
+2017-03-14 11:12:41 [ INFO] (LoadUtils.java:727) - Update the dictionary   words-new.dic file，Cut the word write model results 
+2017-03-14 11:12:43 [ INFO] (DATDictionary.java:75) - init core library ok use time :1613
+2017-03-14 11:12:43 [ INFO] (NgramLibrary.java:17) - init ngram ok use time :491
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:352) - 标题中获取的所有公司名字:[]
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:437) - ***标题中获取的主体公司名字:
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:浙江唐德影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:北京暴风科技股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:乐视影业（北京）有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:470) - ....最后分析得到的公司名字resultCompanyName:长城影视股份有限公司
+2017-03-14 11:12:44 [ INFO] (BocDaemonController.java:86) - ontologyRootId:2HmP1qoO level:-1 projectCode:PR100004 dataminingType:beta
+2017-03-14 11:12:44 [ INFO] (BocAnalysisImpl.java:495) - ***风险标签结果总数:5

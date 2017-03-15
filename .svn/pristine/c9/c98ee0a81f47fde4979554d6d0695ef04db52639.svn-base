@@ -1,0 +1,267 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/page.css"/>
+
+<title>干扰词</title>
+
+<style type="text/css">
+/**  遮罩层样式**/
+.paragraph_btn{height:28px;width:58px;background:#b50129;border-radius:2px;cursor:pointer;color:#fff;margin:0 auto;}
+
+.pop_up_bg{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 99;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	filter:alpha(opacity=40);
+	-moz-opacity:0.4;
+	-khtml-opacity: 0.4;
+	opacity: 0.4;
+	display: none;
+}
+.waiting{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 100;
+	width: 160px;
+	height:45px;
+	margin-top: -22.5px;
+	margin-left: -80px;
+	line-height: 45px;
+	padding-left:60px; 
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+	background:#000 url(images/loding2.gif) no-repeat 10px 50%;
+	filter:alpha(opacity=70);
+	-moz-opacity:0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0.7;
+	color: #fff;
+	-moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+	display: block;
+	display: none;
+}
+/*表格样式 */
+.select_industry_table{
+	width:100%;
+	height:100px;
+	overflow-y:auto;
+	
+}
+.page_wapper{
+	width: 100%;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #fff;
+	padding-left: 10px;
+}
+.page {
+	font-size: 12px;
+}
+.page a{
+	height: 28px;
+	line-height: 28px;
+	display:inline-block;	
+	color: #4a4948;
+}
+.clearfix:after {
+	content: "." ;
+	display: block ;
+	height: 0 ;
+	clear: both ;
+	visibility: hidden ;
+}
+.select_industry_table tr{
+	height:30px;
+}
+.select_industry_table td{
+	width:20%;
+	padding-left:10px;
+	font-size:13px;
+	cursor:pointer;
+	border-left:1px solid #919191;
+	border-top:1px solid #919191
+}
+.select_industry_table td.sele{
+	color:#b92c48;
+}
+</style>
+</head>
+<body>
+	<div >
+		<div style="width:100%;text-align: center;">
+			<input type="text"  id="searchCompany">
+			<input type="button" value="搜索" class="paragraph_btn" onclick="searchbtn1();"/>
+			<a href="javascript:void(0);" onclick="window.location.href='${pageContext.request.contextPath}/test'">返回</a>
+		</div>
+	</div>
+	<div>
+			<table class="select_industry_table"  id="inserttable">
+<!--                     <tr> -->
+<!--                         <td>序号</td> -->
+<!--                         <td>匹配内容</td> -->
+<!--                         <td>公司</td> -->
+<!--                         <td>风险标签</td> -->
+<!--                     </tr> -->
+<!--                     <tr> -->
+<!--                         <td>轻工塑胶纺织服装</td> -->
+<!--                         <td>司法诉讼</td> -->
+<!--                         <td>人力资源</td> -->
+<!--                         <td>知识产权</td> -->
+<!--                     </tr> -->
+             </table>
+				<div class="page_wapper" style="text-align:center;">
+				<div class="page clearfix" id="wd"></div>
+			</div>
+	</div>
+	
+<div id="load" class="pop_up_bg"></div>
+<div  id="openloading" class="waiting">Loding...</div>
+</body>
+<script type="text/javascript">
+
+//分析按钮
+function searchbtn1(){
+	showProjectInfo(1);
+}
+
+//节点监控表格
+function showProjectInfo(page){
+	var searchCompany=$("#searchCompany").val();
+	var page=page;
+	var rows=10;
+	$.ajax({
+	    type: 'POST',
+	    url : "${pageContext.request.contextPath}/anaysis/searchCompany1",
+	    data:{page:page,rows:rows,searchCompany:searchCompany},
+	    success: function(data){
+	    	formatProjectInfoForTable(data);
+	    },
+	    error: function(){
+	    	alert("查询失败");
+	    }
+	});
+	function formatProjectInfoForTable(data){
+		if(data!=null && data.data.length!=null){
+			var content="<tr><td>干扰词</td><td>创建时间</td></tr>";
+			for(var i=0;i<data.data.length;i++){
+				var row=data.data[i];
+				content+="<tr>";
+				content+="<td>"+row['name']+"</td>";
+				content+="<td>"+row['createTime']+"</td>";
+				content+="</tr>";
+			}
+            $(".select_industry_table").attr("style","border-right:1px solid #919191;border-bottom:1px solid #919191;");
+			//填充到页面
+			$('#inserttable').html(content);
+			//更改分页
+			showPageStyle2("#wd",page,data.total,10,10,showProjectInfo);
+		}
+	}
+}
+
+//page 	当前页
+//total 	记录总数
+//pageSize 每页的记录数
+//boxNum   显示的点击盒子数量
+//changPageFunc   翻页事件
+function showPageStyle2(pageId,page,total,pageSize,boxNum,changePageFunc){
+	//1.记录页总数
+	var totalPage=Math.ceil(total/pageSize);
+	//2.显示中心页号位置
+	var position=parseInt(boxNum/2)+(boxNum%2);
+	if(boxNum%2==0){
+		position+=1;
+	}
+	//4.点击块起始位置
+	var boxStart= (page-position)+1;
+	if((boxStart+boxNum)>totalPage){//右越界检查
+		boxStart=totalPage-boxNum+1;
+	}
+	if(boxStart<=0){//左越界检查
+		boxStart=1;
+	}
+	//5.拼接分页
+	var content="<div class='page_01 L'>";
+	content+="<a class='page_prev firstPage' href='javascript:void(0)'>首页</a>";
+	content+="<a class='page_prev prePage' href='javascript:void(0)'>上一页</a>";
+	for(var i=boxStart;i<=totalPage && i<(boxStart+boxNum);i++){
+		if(i==page){
+			content+="<a class='page_list page_hover' href='javascript:void(0)'>"+i+"</a>";
+		}else{
+			content+="<a class='page_list' href='javascript:void(0)'>"+i+"</a>";
+		}
+	} 
+	content+="<a class='page_next nextPage' href='javascript:void(0)'>下一页</a>";
+	content+="<a class='page_next lastPage' href='javascript:void(0)'>尾页</a>";
+	content+="</div>";
+	
+	content+="<div class='page_02 L'>";
+	content+="<a href='javascript:void(0)'>共</a>";
+	content+="<a href='javascript:void(0)' class='color_yellow'>"+totalPage+"</a>";
+	content+="<a href='javascript:void(0)'>页</a>";
+	content+="<a href='javascript:void(0)'>跳转到</a>";
+	content+="<input type='text' class='page_text'>";
+	content+="<a href='javascript:void(0)'>页</a>";
+	content+="<a href='javascript:void(0)' class='button_go'>GO</a>"
+	content+="</div>";
+	$(pageId).html(content);
+	//6.事件
+	//首页
+	$(pageId+" .firstPage").click(function(){
+		changePageFunc(1);
+	});
+	//上一页
+	$(pageId+" .prePage").click(function(){
+		var page=parseInt($(pageId+" .page_hover").text())-1;
+		if(page>0){
+			changePageFunc(page);
+		}
+	});
+	//点击框
+	$(pageId+" .page_list").click(function(){
+		var page=parseInt($(this).text());
+		if(page>0){
+			changePageFunc(page);
+		}
+	});
+	//下一页
+	$(pageId+" .nextPage").click(function(){
+		var page=parseInt($(pageId+" .page_hover").text())+1;
+		if(page<=totalPage){
+			changePageFunc(page);
+		}
+	});
+	//尾页
+	$(pageId+" .lastPage").click(function(){
+		if(totalPage!=0){
+			changePageFunc(totalPage);
+		}
+	});
+	//GO
+	$(pageId+" .button_go").click(function(){
+		var goPage=$(pageId+" .page_text").val();
+		if(!isNaN(goPage)){
+			goPage=parseInt(goPage);
+			if(goPage>0&&goPage<=totalPage){
+				changePageFunc(goPage);
+			}
+		}
+		$(pageId+" .page_text").val("");
+	});
+}
+  </script>
+</html>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.oracle:ojdbc14:11g">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/oracle/ojdbc14/11g/ojdbc14-11g.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/oracle/ojdbc14/11g/ojdbc14-11g-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/oracle/ojdbc14/11g/ojdbc14-11g-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

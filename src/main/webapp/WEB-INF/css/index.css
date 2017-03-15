@@ -1,0 +1,66 @@
+#底部样式
+.footer{border-top:1px solid #E8E8E8; padding:15px 0;font-family:tahoma,Arial;font-size:12px;color:#999;line-height:22px;text-align:center}
+.footer a,.footer a:hover{color:#999}
+#左侧导航
+.left_container ul.nav_sec{width: 100%;border-top: 1px solid #353a57;}
+.left_container ul.nav_sec li{font-size: 12px;font-weight: bold;color: #0E2D5F;padding: 10px 0px;padding-left: 32px;cursor:pointer;}
+.left_container ul.nav_sec li:hover{background-color:#0785f4;color: #fff;}
+.left_container ul.nav_sec li.sele{background-color:#0785f4;color: #fff;}
+#头部导航
+.top-left{float:left;font-size: 18px;font-weight: bold;color: #0E2D5F;padding: 10px 0px;padding-left: 32px;}
+#tab切换
+.clearfix:after{content:"\20";display:block;height:0;clear:both;visibility:hidden}.clearfix{zoom:1}
+.tabBar {border-bottom: 2px solid #222}
+.tabBar span {background-color: #e8e8e8;cursor: pointer;display: inline-block;float: left;font-weight: bold;height: 30px;line-height: 30px;padding: 0 15px}
+.tabBar span.current{background-color: #222;color: #fff}
+.tabCon {display: none}
+#右上角
+.topnav{height:30px;line-height:30px;background:url(../images/bg_topnav.gif) repeat-x 0 0;border-bottom:1px solid #EBEBEB; font-size:12px}
+.topbar{background-color: #ECECEC;border-bottom:1px solid #ddd}
+.topbar a{ margin-right:5px}
+.r_nav{ display:inline-block; color:#999}
+
+/*默认状态*/
+.table0{margin-top: 30px;}
+.table0 tr{display:block; margin:2px 0;}
+.table0 tr td{width:150px;}
+
+.input-text,.textarea{box-sizing:border-box;border:solid 1px #ddd;width:100%;
+    -webkit-transition:all 0.2s linear 0s;
+       -moz-transition:all 0.2s linear 0s;
+         -o-transition:all 0.2s linear 0s;
+            transition:all 0.2s linear 0s}
+.textarea{ height:auto; font-size:14px; padding:4px}
+.input-text:hover,.textarea:hover{border: solid 1px #3bb4f2}
+/*得到焦点后*/
+.input-text.focus,textarea.focus{border:solid 1px #0f9ae0 \9;border-color:rgba(82,168,236,0.8);box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6)}
+/*不可点击*/
+.input-text.disabled,.textarea.disabled,.input-text.disabled.focus,.textarea.disabled.focus{background-color:#ededed; cursor:default;border-color: #ddd;
+	-webkit-box-shadow:inset 0 2px 2px #e8e7e7;
+       -moz-box-shadow:inset 0 2px 2px #e8e7e7;
+            box-shadow:inset 0 2px 2px #e8e7e7}
+/*只读状态*/
+.input-text.disabled,.textarea.disabled{background-color:#e6e6e6; cursor:default}
+/*调节easyui样式*/
+.dategrid{width:850px;
+	border:solid 1px #dad9d7;
+	border-top:0px;
+	margin-left:5px;
+	margin-right:5px;
+	padding:5px;}
+.datagrid .datagrid-pager{
+	border-style: solid;
+    border-width: 1px 0 0;
+    display: block;
+    margin: 0 0 0 10px;
+    width: 490px;
+}
+.datagrid-toolbar {
+    border-style: solid;
+    border-width: 0;
+    height: auto;
+    padding: 1px 2px;
+    width: 148px;
+}
+/*阴影*/
+.input-text.box-shadow,.textarea.box-shadow{-ms-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);box-shadow:inset 0 1px 1px rgba(0,0,0,0.075)}

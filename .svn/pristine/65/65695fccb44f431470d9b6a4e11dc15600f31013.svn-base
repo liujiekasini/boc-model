@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:aop="http://www.springframework.org/schema/aop" 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" 
+       xmlns:tx="http://www.springframework.org/schema/tx" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+        http://www.springframework.org/schema/mvc 
+        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd 
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+    <mvc:annotation-driven />
+    <context:component-scan base-package="com.oec" />
+	<!-- jdbc 配置 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+              <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+              <property name="jdbcUrl" value="jdbc:mysql://115.182.234.126:3306/boctest?characterEncoding=utf8"></property>
+              <property name="user" value="root"></property>
+              <property name="password" value="ozjHj6pu~cPvzq7"></property>
+       </bean>
+    <!-- jdbcTemplate -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <!-- 事物 -->
+    <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+<!--     <tx:annotation-driven transaction-manager="transactionManager" /> -->
+
+
+	
+		<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+						<value>text/html;charset=UTF-8</value>
+<!-- 								<value>text/plain;charset=UTF-8</value> -->
+						</list>
+					</property>
+				</bean>
+<!-- 				启动JSON格式的配置 -->
+<!-- 				<bean id="jacksonMessageConverter" -->
+<!-- 					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"> -->
+<!-- 					<property name="supportedMediaTypes"> -->
+<!-- 						<list> -->
+<!-- 							<value>application/json;charset=UTF-8</value> -->
+<!-- 						</list> -->
+<!-- 					</property> -->
+<!-- 				</bean> -->
+			</list>
+		</property>
+	</bean>
+
+    <!-- 声明viewResolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+    </bean>
+
+</beans>

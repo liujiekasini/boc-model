@@ -1,0 +1,285 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/page.css"/>
+<title>中行模型测试</title>
+
+<style type="text/css">
+/**  遮罩层样式**/
+.paragraph_btn{height:28px;width:78px;background:#b50129;border-radius:2px;cursor:pointer;color:#fff;margin:0 auto;}
+
+.pop_up_bg{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 99;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	filter:alpha(opacity=40);
+	-moz-opacity:0.4;
+	-khtml-opacity: 0.4;
+	opacity: 0.4;
+	display: none;
+}
+.waiting{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 100;
+	width: 160px;
+	height:45px;
+	margin-top: -22.5px;
+	margin-left: -80px;
+	line-height: 45px;
+	padding-left:60px; 
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+	-webkit-box-sizing:border-box; /* Safari */
+	background:#000 url(images/loding2.gif) no-repeat 10px 50%;
+	filter:alpha(opacity=70);
+	-moz-opacity:0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0.7;
+	color: #fff;
+	-moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+	display: block;
+	display: none;
+}
+/*表格样式 */
+.select_industry_table{
+	width:100%;
+	height:100px;
+	overflow-y:auto;
+	
+}
+.select_industry_table tr{
+	height:30px;
+}
+.select_industry_table td{
+/* 	width:20%; */
+	padding-left:10px;
+	font-size:13px;
+	cursor:pointer;
+	border-left:1px solid #919191;
+	border-top:1px solid #919191
+}
+.select_industry_table td.sele{
+	color:#b92c48;
+}
+</style>
+</head>
+<body>
+	<div >
+		<div  style="float:left;width: 70%;">
+			<table>
+				<tr style="height:50px;"><td style="width:200px;text-align: right;">标题:</td><td style="width:800px;"><input  style="width:800px;" type="text"  id="gettitle"/></td></tr>
+				<tr ><td style="width:200px;text-align: right;">内容:</td><td ><textarea style="width:800px;resize: none;" rows='5' id="getcontent"></textarea></td></tr>
+			</table>
+		</div>
+		<div style="float:right;width:28%;">
+			<input type="button" value="开始分析" class="paragraph_btn" onclick="anaysisbtn();"/>
+			<input type="button" value="添加公司名称" class="paragraph_btn" onclick="showtable1();"/>
+			<input type="button" value="添加干扰词" class="paragraph_btn" onclick="showtable2();"/><br>
+			<a href="${pageContext.request.contextPath}/test1;" target="_Blank" >公司简称检索</a>&nbsp;&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath}/test2;" target="_Blank" >干扰词检索</a>
+		</div>
+	</div>
+	<div>
+			<table class="select_industry_table"  id="inserttable">
+<!--                     <tr> -->
+<!--                         <td>序号</td> -->
+<!--                         <td>匹配内容</td> -->
+<!--                         <td>公司</td> -->
+<!--                         <td>风险标签</td> -->
+<!--                     </tr> -->
+<!--                     <tr> -->
+<!--                         <td>轻工塑胶纺织服装</td> -->
+<!--                         <td>司法诉讼</td> -->
+<!--                         <td>人力资源</td> -->
+<!--                         <td>知识产权</td> -->
+<!--                     </tr> -->
+             </table>
+	
+	</div>
+	
+	<!-- 弹出框 -->
+	<!--          浮层框架开始         -->
+    <div id="Layer1" align="center" style="position: fixed; z-index: 9999; left:400px; top: 50px;
+         background-color: #EDEDED; display: none;" >
+        <table width="600" height="300" border="0" cellpadding="0" cellspacing="0" style="border: 0    solid    #e7e3e7;
+             border-collapse: collapse ;" >
+            <tr>
+                <td colspan="2" style="background-color: #73A2d6; width:590px;height:40px;color: #fff; padding-left: 4px; padding-top: 2px;
+                     font-weight: bold; font-size: 12px;" height="10px" valign="middle">
+                     <div align="right"><a href=JavaScript:; class="STYLE1" onclick="Lock_CheckForm1();">[关闭]</a> &nbsp;&nbsp;&nbsp;&nbsp;</div></td>
+            </tr>
+            <tr><td style="width:150px;text-align: right;">简称:</td><td style="width:250px;text-align: left;"><input type="text"  style="width:250px;" id="getshortname"></td></tr>
+            <tr><td style="width:150px;text-align: right;">全称:</td><td style="width:250px;text-align: left;"><input type="text"  style="width:250px;" id="getlongname"></td></tr>
+            <tr>
+                <td colspan="2"  height="130" align="center">
+				<input type="button" value="确定" class="paragraph_btn" onclick="insertcompany();"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--          浮层框架开始         -->
+    <div id="Layer2" align="center" style="position: fixed; z-index: 9999;  left:400px; top: 50px;
+         background-color: #EDEDED; display: none;" >
+        <table width="600" height="300" border="0" cellpadding="0" cellspacing="0" style="border: 0    solid    #e7e3e7;
+             border-collapse: collapse ;" >
+            <tr>
+                <td colspan="2"  style="background-color: #73A2d6;width:590px;height:40px; color: #fff; padding-left: 4px; padding-top: 2px;
+                     font-weight: bold; font-size: 12px;" height="10px" valign="middle">
+                     <div align="right"><a href=JavaScript:; class="STYLE1" onclick="Lock_CheckForm2();">[关闭]</a> &nbsp;&nbsp;&nbsp;&nbsp;</div></td>
+            </tr>
+            <tr><td style="width:150px;text-align: right;">干扰词:</td><td style="width:250px;text-align: left;"><input type="text" style="width:250px;" id="geterrorword"></td></tr>
+            <tr>
+                <td colspan="2"  height="130" align="center">
+				<input type="button" value="确定" class="paragraph_btn" onclick="insertword();"/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- 弹出框                 start-->
+<div id="load" class="pop_up_bg"></div>
+<div  id="openloading" class="waiting">Loding...</div>
+</body>
+<script type="text/javascript">
+
+//分析按钮
+function anaysisbtn(){
+	var gettitle=$("#gettitle").val();
+	var getcontent=$("#gettitle").val();
+	   $("#load").show();
+		$("#openloading").show();
+    $.ajax({
+        url : "${pageContext.request.contextPath}/anaysis/startanaysis",
+        type : "POST",
+        data : {
+        	"gettitle":gettitle,
+        	"getcontent":getcontent
+        },
+        dataType : "json",
+        error : function(obj) {
+            alert("数据查询失败");
+        },
+        success : function(obj) {
+     		 $("#load").hide();
+	    	$("#openloading").hide();
+	    	if(obj.total>0){//优质
+	    	var inserttable="";
+	    	inserttable+="<tr><td style='width:30px;'>序号</td><td style='width:500px;'>匹配内容</td><td style='width:100px;'>公司</td><td style='width:300px;'>风险标签</td></tr>";
+	    	var j=1;
+             for(var i=0;i<obj.data.length;i++){
+            	 var lablelist="";
+            	 var ontologyInfos=obj.data[i].ontologyInfos;
+            	 for(var z=0;z<ontologyInfos.length;z++){
+            		 lablelist= lablelist+" "+ontologyInfos[z].ontopath;
+            	 }
+            	 inserttable+="<tr><td>"+j+"</td><td>"+obj.data[i].content+"</td><td>"+obj.data[i].companyName+"</td><td>"+lablelist+"</td></tr>";
+            	 j++;
+             }
+             $(".select_industry_table").attr("style","border-right:1px solid #919191;border-bottom:1px solid #919191;");
+             $("#inserttable").html(inserttable);
+	    	}else{
+	    		$("#inserttable").html("");
+	    	}
+        }
+    });
+}
+	   
+//插入公司全称和简称
+function insertcompany(){
+	var getshortname=$("#getshortname").val();
+	var getlongname=$("#getlongname").val();
+    $.ajax({
+        url : "${pageContext.request.contextPath}/anaysis/insertcompany",
+        type : "POST",
+        data : {
+        	getshortname:getshortname,
+        	getlongname:getlongname
+        },
+//         dataType : "json",
+
+        error : function(obj) {
+            alert("数据查询失败");
+        },
+        success : function(obj) {
+        	console.info(obj);
+        	Lock_CheckForm1();
+        	if(obj>0){
+        		alert("插入成功");
+        	}else if(obj=-1){
+        		alert("已经存在");
+        	}else{
+        		alert("操作错误");
+        	}
+        }
+    });
+}
+
+//插入干扰词
+function insertword(){
+	var geterrorword=$("#geterrorword").val();
+    $.ajax({
+        url : "${pageContext.request.contextPath}/anaysis/insertword",
+        type : "POST",
+        data : {
+        	geterrorword:geterrorword
+        },
+//         dataType : "json",
+        error : function(obj) {
+            alert("数据查询失败");
+        },
+        success : function(obj) {
+        	Lock_CheckForm2();
+        	console.info(obj);
+        	if(obj>0){
+        		alert("插入成功");
+        	}else if(obj=-1){
+        		alert("已经存在");
+        	}else{
+        		alert("操作错误");
+        	}
+        }
+    });
+}
+</script>
+<!-- 加入弹窗样式 -->
+<script>   
+function showtable1(){
+	 var doc=document.getElementById("Layer1");
+	   doc.style.display="block";   
+	   doc.style.width=document.body.clientWidth;   
+	   doc.style.height=document.body.clientHeight;   
+	   doc.style.display='block';  
+}
+function showtable2(){
+	 var doc=document.getElementById("Layer2");
+	   doc.style.display="block";   
+	   doc.style.width=document.body.clientWidth;   
+	   doc.style.height=document.body.clientHeight;   
+	   doc.style.display='block';  
+}
+  function Lock_CheckForm1(){   
+	  var doc=document.getElementById("Layer1");
+  	 doc.style.display='none';
+  	 doc.style.display='none';
+ 	 return   false;   
+   }   
+  function Lock_CheckForm2(){   
+	  var doc=document.getElementById("Layer2");
+  	 doc.style.display='none';
+  	 doc.style.display='none';
+ 	 return   false;   
+   }   
+  </script>
+</html>

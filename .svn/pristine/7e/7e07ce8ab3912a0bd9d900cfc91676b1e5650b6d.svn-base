@@ -1,0 +1,134 @@
+package com.oec.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
+
+import com.dinfo.boc.analysis.BocAnalysis;
+import com.dinfo.boc.analysis.impl.BocAnalysisImpl;
+import com.dinfo.boc.bean.BocParseInfo;
+import com.dinfo.boc.utils.OecDaemonUtils;
+import com.oec.model.Paging;
+
+@Service
+public class AnaysisService {
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	public Paging startanaysis(String title, String content) {
+		BocAnalysis analysis = new BocAnalysisImpl();
+		// 生成词典
+		OecDaemonUtils.initResources("115.182.234.116:8992", 1);
+		String projectCode = "PR100004";
+		String rootOntoId = "2HmP1qoO";
+		int ontoLevel = -1;
+		int dataMiningType = 1;
+		List<String> usefulOntoIds = new ArrayList<String>();
+		String keywords = "";
+
+		List<BocParseInfo> bocInfos = analysis.analysisBocParseInfos(projectCode, dataMiningType, rootOntoId, ontoLevel,
+				usefulOntoIds, title, keywords, content);
+		OecDaemonUtils.closeConnection();
+		Paging page = new Paging();
+		page.setData(bocInfos);
+		page.setTotal(bocInfos.size());
+		return page;
+	}
+
+	public static void main(String[] args) {
+		BocAnalysis analysis = new BocAnalysisImpl();
+		// 生成词典
+		OecDaemonUtils.initResources("115.182.234.116:8992", 1);
+		String projectCode = "PR100004";
+		String rootOntoId = "2HmP1qoO";
+		int ontoLevel = -1;
+		int dataMiningType = 1;
+		List<String> usefulOntoIds = new ArrayList<String>();
+		String keywords = "";
+		String content = "12月23日消息，近日湖南众益文化传媒股份有限公司（证券简称：众益传媒 证券代码：831882）股东文高永权向招商银行股份有限公司长沙分行质押1200万股，用于为公司800万元贷款提供担保。 　　据挖贝网了解，股东文高永权向招商银行股份有限公司长沙分行质押1200万股，全部为有限售条件股份，占公司总股本的14.88%。质押期限为2016年12月21日起至实际签署的质押合同中约定的质押期限结束之日止（质押合同期限从实际贷款发放之日起开始计算，期限一年）。 　　据了解，为满足公司经营需要，公司向招商银行股份有限公司长沙分行申请银行授信1800万元，文高永权以其持有的公司限售股1200万股为上述银行授信提供800万元的股权质押担保。除上述质押担保外，不存在结合其他资产抵押或质押等情况。董事长、总经理文高永权为众益传媒控股股东，持有众益传媒5271.04万股，占比65.35%，本次股权质押不会对公司生产经营等产生不利影响，也不会导致公司控股股东或者实际控制人发生变化。 　　据挖贝新三板研究院资料显示，众益传媒是现代服务业中的广告业务的运营商和服务提供商。2016年上半年营业收入3608.48万元，较上年同期增长72.07%；归属于挂牌公司股东的净利润386.15万元，较上年同期增长44.11%。 挖贝网 考考你：“看见女客户洗澡怎么办？”一家世界著名的大酒店招聘经理，老板想考考应聘者：“有一天当你走进客人的房间，发现一女客正在裸浴。你应该怎么办 ？” 众人都抢着回答，有的说“对不起，小姐，我不是故意的。”有的说“小姐，我什么都没有看见。” 老板听后不停的摇头。 这个时候一个帅气的小伙子说了一句话，当场被录用了。你知道他说了什么吗？关注微信公众号：jrjstock，回复“洗澡”就知道答案啦";
+		String title = "众益传媒股东文高永权质押1200万股 为800万元贷款提供担保";
+		List<BocParseInfo> bocInfos = analysis.analysisBocParseInfos(projectCode, dataMiningType, rootOntoId, ontoLevel,
+				usefulOntoIds, title, keywords, content);
+		OecDaemonUtils.closeConnection();
+		System.out.println(bocInfos.toString());
+	}
+
+	private boolean companyNameYZ(String getshortname, String getlongname) {
+		String sql = "select * from company_name_new where short_name=? and full_name=?";
+		List<Map<String, Object>> count = jdbcTemplate.queryForList(sql, new Object[] { getshortname, getlongname });
+		if (count.size() > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	// company_name_new表
+	public int insertcompany(String getshortname, String getlongname) {
+		if (companyNameYZ(getshortname, getlongname)) {
+			return -1;
+		}
+		String sql = "insert into company_name_new(short_name,full_name,create_time) values(?,?,NOW())";
+		int count = 0;
+		try {
+			count = jdbcTemplate.update(sql, new Object[] { getshortname, getlongname });
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+	private boolean errorwordYZ(String geterrorword) {
+		String sql = "select * from company_wrong where name=?";
+		List<Map<String, Object>> count = jdbcTemplate.queryForList(sql, new Object[] { geterrorword });
+		if (count.size() > 0) {
+			return true;
+		}
+		return false;
+	}
+
+	// company_wrong表
+	public int insertword(String geterrorword) {
+		if (errorwordYZ(geterrorword)) {
+			return -1;
+		}
+		String sql = "insert into company_wrong(name,create_time) values(?,NOW())";
+		int count = jdbcTemplate.update(sql, new Object[] { geterrorword });
+		return count;
+	}
+
+	public Paging searchCompany(int page, int rows, String searchCompany) {
+		int start = rows * (page - 1);
+		String sql = "select short_name as shortName,full_name as fullName,date_format(create_time,'%y-%m-%d %h:%m:%s') as createTime from company_name_new";
+		if (!searchCompany.equals("")) {
+			sql += " where short_name like '%" + searchCompany + "%' or full_name like '%" + searchCompany + "%'";
+		}
+		List<Map<String, Object>> list1 = jdbcTemplate.queryForList(sql);
+		sql += "  limit " + start + "," + rows;
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+		Paging pagelist = new Paging();
+		pagelist.setData(list);
+		pagelist.setTotal(list1.size());
+		return pagelist;
+	}
+
+	public Paging searchCompany1(int page, int rows, String searchCompany) {
+		int start = rows * (page - 1);
+		String sql = "select name as name,date_format(create_time,'%y-%m-%d %h:%m:%s')  as createTime from company_wrong";
+		if (!searchCompany.equals("")) {
+			sql += " where name like '%" + searchCompany + "%'";
+		}
+		List<Map<String, Object>> list1 = jdbcTemplate.queryForList(sql);
+		sql += "  limit " + start + "," + rows;
+		List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
+		Paging pagelist = new Paging();
+		pagelist.setData(list);
+		pagelist.setTotal(list1.size());
+		return pagelist;
+	}
+}

@@ -1,0 +1,26 @@
+log4j.rootLogger=INFO, R, C
+log4j.appender.C=org.apache.log4j.ConsoleAppender
+log4j.appender.C.layout=org.apache.log4j.PatternLayout
+log4j.appender.C.layout.ConversionPattern=%d %5p [%t] (%F:%L) - %m%n
+#第一种方案文件切割
+#log4j.appender.R=org.apache.log4j.RollingFileAppender
+#文件路径
+#log4j.appender.R.File=air_web_log4j.log
+#文件超过10MB切割文件
+#log4j.appender.R.MaxFileSize=10MB
+#保留100个文件
+#log4j.appender.R.MaxBackupIndex=100
+#log4j.appender.R.layout=org.apache.log4j.PatternLayout
+#log4j.appender.R.layout.ConversionPattern=%d %5p [%t] (%F:%L) - %m%n
+#第一种方案结束
+#第二种方案每天一个文件
+log4j.appender.R=org.apache.log4j.DailyRollingFileAppender
+#文件路径
+log4j.appender.R.File=springmvc_maven_log4j_
+log4j.appender.R.DatePattern=yyyy-MM-dd'.log'
+log4j.appender.R.Threshold =DEBUG
+log4j.appender.R.layout=org.apache.log4j.PatternLayout
+log4j.appender.R.encoding=UTF-8
+log4j.appender.R.layout.ConversionPattern=%-d{yyyy-MM-dd HH\:mm\:ss}[%c] [%t\:%r] - [%p]  %m%n
+#第二种方案结束
+log4j.logger.com.foo=WARN

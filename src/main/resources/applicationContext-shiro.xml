@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd"
+	default-lazy-init="true">
+	<!-- author:liujie -->
+      
+	<bean id="myRealm" class="com.oec.shiro.MyReam"></bean>  
+ 	 <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
+  	
+		
+  	<!-- 配置jdbcRealm -->
+<!--   	<bean id="sampleRealm" class="org.apache.shiro.realm.jdbc.JdbcRealm">   -->
+<!-- 		    <property name="dataSource" ref="dataSource" />   -->
+<!-- 		    登录认证用户的查询SQL，需要用登录用户名作为条件，查询密码字段。 -->
+<!-- 		    <property name="authenticationQuery"   -->
+<!-- 		        value="select t.password from t_user t where t.username = ?" />  -->
+<!-- 		        用户角色查询SQL，需要通过登录用户名去查询。查询角色字段  -->
+<!-- 		    <property name="userRolesQuery"   -->
+<!-- 		        value="select a.rolename from t_user_role t left join t_role a on t.role_id = a.id  left join t_user u on u.id=a.id where u.username = ? " />   -->
+<!-- 		  用户的权限资源查询SQL，需要用单一角色查询角色下的权限资源，如果存在多个角色，则是遍历每个角色，分别查询出权限资源并添加到集合中。 -->
+<!-- 		    <property name="permissionsQuery"   -->
+<!-- 		        value="	SELECT b.permissionname FROM t_role t LEFT JOIN t_role_permission a ON t.id = a.role_id LEFT JOIN t_permission b ON a.permission = b.id WHERE t.rolename = ?" />   -->
+<!-- 		   默认false。False时不会使用permissionsQuery的SQL去查询权限资源。设置为true才会去执行。 -->
+<!-- 		    <property name="permissionsLookupEnabled" value="true" />   -->
+<!-- 		   	密码是否加盐，默认是NO_SALT不加盐。加盐有三种选择CRYPT,COLUMN,EXTERNAL。详细可以去看文档。这里按照不加盐处理。 -->
+<!-- 		    <property name="saltStyle" value="NO_SALT" />   -->
+<!-- 		    密码匹配规则。 -->
+<!-- 		    <property name="credentialsMatcher" ref="hashedCredentialsMatcher" />   -->
+<!-- 	</bean>  -->
+	<!-- 密码匹配规则。 -->
+	<bean id="hashedCredentialsMatcher"  
+	    class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">  
+	    <!-- 必须的，没有默认值。可以有MD5或者SHA-1，如果对密码安全有更高要求可以用SHA-256或者更高。这里使用MD5 -->
+	        <property name="hashAlgorithmName" value="MD5" />  
+	        <!-- 默认是true，此时用的是密码加密用的是Hex编码；false时用Base64编码 -->
+	        <property name="storedCredentialsHexEncoded" value="true" />  
+	        <!-- 迭代次数，默认值是1。 -->
+	        <property name="hashIterations" value="1" />  
+	</bean> 
+  	<!-- securityManagerper配置 -->
+<!--   	 <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager" />   -->
+	<!-- 上面内存启动报连接超时  所以使用下面内存 -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" />    
+  	 <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
+	<!-- 单realm应用。如果有多个realm，使用‘realms’属性代替 -->  
+<!-- 	<property name="realm" ref="sampleRealm" />   -->
+	<property name="realm" ref="myRealm" />  
+	<!-- 使用下面配置的缓存管理器 -->  
+	<property name="cacheManager" ref="cacheManager" />  
+	</bean>  
+	<!-- 配置过滤器 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">  
+			<!-- 这个属性是必须的。 -->
+	        <property name="securityManager" ref="securityManager" />  
+	        <!-- 没有登录的用户请求需要登录的页面时自动跳转到登录页面，不是必须的属性，不输入地址的话会自动寻找项目web项目的根目录下的”/login.jsp”页面。 -->
+	        <property name="loginUrl" value="/login" />  
+	        <!-- 登录成功默认跳转页面，不配置则跳转至”/”。如果登陆前点击的一个需要登录的页面，则在登录自动跳转到那个需要登录的页面。不跳转到此。 -->
+	        <property name="successUrl" value="/user" />  
+	        <!-- 没有权限默认跳转的页面 -->
+	        <property name="unauthorizedUrl" value="/403" />  
+	        <!-- anon:例子/admins/**=anon 没有参数，表示可以匿名使用。
+authc:例如/admins/user/**=authc表示需要认证(登录)才能使用，没有参数
+roles：例子/admins/user/**=roles[admin],参数可以写多个，多个时必须加上引号，并且参数之间用逗号分割，当有多个参数时，例如admins/user/**=roles["admin,guest"],每个参数通过才算通过，相当于hasAllRoles()方法。
+perms：例子/admins/user/**=perms[user:add:*],参数可以写多个，多个时必须加上引号，并且参数之间用逗号分割，例如/admins/user/**=perms["user:add:*,user:modify:*"]，当有多个参数时必须每个参数都通过才通过，想当于isPermitedAll()方法。
+rest：例子/admins/user/**=rest[user],根据请求的方法，相当于/admins/user/**=perms[user:method] ,其中method为post，get，delete等。
+port：例子/admins/user/**=port[8081],当请求的url的端口不是8081是跳转到schemal://serverName:8081?queryString,其中schmal是协议http或https等，serverName是你访问的host,8081是url配置里port的端口，queryString
+是你访问的url里的？后面的参数。
+authcBasic：例如/admins/user/**=authcBasic没有参数表示httpBasic认证
+ssl:例子/admins/user/**=ssl没有参数，表示安全的url请求，协议为https
+user:例如/admins/user/**=user没有参数表示必须存在用户，当登入操作时不做检查
+注：anon，authcBasic，auchc，user是认证过滤器，
+perms，roles，ssl，rest，port是授权过滤器 -->
+	        <property name="filterChainDefinitions">  
+	            <value>  
+	             <!-- anon表示此地址不需要任何权限即可访问 -->
+	           	    /login = anon 
+<!-- 	                /home* = anon   -->
+	                /logout = anon  
+<!-- 	                roles[manager]表示访问此连接需要用户的角色为manager -->
+<!-- 	                /role/** = roles[manager]   -->
+	                /user/** = roles[manager,admin,normal]  
+<!-- 	                /permission/** = perms[permssion:look]   -->
+	                <!--所有的请求(除去配置的静态资源请求或请求地址为anon的请求)都要通过登录验证,如果未登录则跳到/login-->    
+	                /** = authc  
+	            </value>  
+	        </property>  
+	    </bean> 
+      
+      
+    
+</beans> 
